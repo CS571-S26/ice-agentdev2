@@ -1,0 +1,274 @@
+{
+  "info": {
+    "_postman_id": "57670271-aa64-4370-942b-8d054e795437",
+    "name": "CS571 S26 HW11 Shareable",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9136549",
+    "_collection_link": "https://go.postman.co/collection/9136549-57670271-aa64-4370-942b-8d054e795437?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"cole1\",\r\n    \"pin\": \"4321123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/register",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw11",
+            "chat",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"cole\",\r\n    \"pin\": \"1234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw6/login",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw6",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/logout",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw11",
+            "chat",
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"My Test Post\",\r\n    \"content\": \"lorem ipsum dolor sit\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/messages?chatroom=Bascom Hill Hangout",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw11",
+            "chat",
+            "messages"
+          ],
+          "query": [
+            {
+              "key": "chatroom",
+              "value": "Bascom Hill Hangout"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Posts",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/messages?chatroomum=Bascom Hill Hangout&num=1",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw11",
+            "chat",
+            "messages"
+          ],
+          "query": [
+            {
+              "key": "chatroomum",
+              "value": "Bascom Hill Hangout",
+              "description": "OPTIONAL! If ommitted, returns across all chatrooms."
+            },
+            {
+              "key": "num",
+              "value": "1",
+              "description": "OPTIONAL! If ommitted, returns latest 10 messages."
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Chatrooms",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/chatrooms",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw11",
+            "chat",
+            "chatrooms"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Who Am I?",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-CS571-ID",
+            "value": "ENTER_YOUR_BID",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw6/whoami",
+          "protocol": "https",
+          "host": [
+            "cs571api",
+            "cs",
+            "wisc",
+            "edu"
+          ],
+          "path": [
+            "rest",
+            "s26",
+            "hw6",
+            "whoami"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

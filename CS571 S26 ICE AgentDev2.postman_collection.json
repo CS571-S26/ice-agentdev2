@@ -1,0 +1,396 @@
+{
+  "info": {
+    "_postman_id": "e4e5e997-4381-4cf7-981e-01943f7469a0",
+    "name": "CS571 S26 ICE AgentDev2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9136549",
+    "_collection_link": "https://go.postman.co/collection/9136549-e4e5e997-4381-4cf7-981e-01943f7469a0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "BadgerChat Mini",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"bucky\",\r\n    \"password\": \"badger\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/ice/login",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "ice",
+                "login"
+              ]
+            },
+            "description": "Logs a user in. BadgerChat Mini does not require pre-registration — any username/password creates a session. Sets the `ice_auth` cookie on success."
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/ice/logout",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "ice",
+                "logout"
+              ]
+            },
+            "description": "Clears the `ice_auth` cookie, ending the current session."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Comments (Short)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/ice/comments-short?num=2",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "ice",
+                "comments-short"
+              ],
+              "query": [
+                {
+                  "key": "num",
+                  "value": "2"
+                }
+              ]
+            },
+            "description": "Returns the most recent comments on BadgerChat Mini's single board. Public — no login required."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"comment\": \"My Test Comment!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/ice/comments",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "ice",
+                "comments"
+              ]
+            },
+            "description": "Posts a new comment. Requires a valid `ice_auth` session (run the Login request first). Max 512 characters."
+          },
+          "response": []
+        }
+      ],
+      "description": "The four `/rest/s26/ice/*` endpoints your tools front. Run Login first so `ice_auth` is set; then Create Comment will be authorized."
+    },
+    {
+      "name": "AI Responses",
+      "item": [
+        {
+          "name": "Basic Chat",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"developer\",\r\n            \"content\": \"You are Bucky, a friendly assistant for BadgerChat Mini.\"\r\n        },\r\n        {\r\n            \"role\": \"assistant\",\r\n            \"content\": \"Welcome to BadgerChat Mini! Ask me anything.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"hey how are you\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/ai/responses",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "hw11",
+                "ai",
+                "responses"
+              ]
+            },
+            "description": "A plain chat turn with no tools. Returns `{ \"msg\": \"...\" }`."
+          },
+          "response": []
+        },
+        {
+          "name": "Structured Ouputs - Person Example",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"developer\",\r\n            \"content\": \"Extract the user's personal info.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"Hi, my name is George Washington and I was born in 1732.\"\r\n        }\r\n    ],\r\n    \"response_schema\": {\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"name\": {\r\n                \"type\": \"string\",\r\n                \"description\": \"The person's full name.\"\r\n            },\r\n            \"yearBorn\": {\r\n                \"type\": \"integer\",\r\n                \"description\": \"The year they were born.\"\r\n            }\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/ai/responses",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "hw11",
+                "ai",
+                "responses"
+              ]
+            },
+            "description": "A plain chat turn with no tools. Returns `{ \"msg\": \"...\" }`."
+          },
+          "response": []
+        },
+        {
+          "name": "Structured Ouputs - BadgerChat Mini Example",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"developer\",\r\n            \"content\": \"Extract the user's intent from the message below.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"hey bucky what's the latest comments on badgerchat mini\"\r\n        }\r\n    ],\r\n    \"response_schema\": {\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"action\": {\r\n                \"type\": \"string\",\r\n                \"enum\": [\r\n                    \"GET_COMMENTS\",\r\n                    \"LOGIN\",\r\n                    \"LOGOUT\",\r\n                    \"CREATE_COMMENT\",\r\n                    \"UNKNOWN\"\r\n                ],\r\n                \"description\": \"Which action the model should request.\"\r\n            }\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/ai/responses",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "hw11",
+                "ai",
+                "responses"
+              ]
+            },
+            "description": "A plain chat turn with no tools. Returns `{ \"msg\": \"...\" }`."
+          },
+          "response": []
+        },
+        {
+          "name": "Tool Call Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"developer\",\r\n            \"content\": \"You are Bucky. Use the provided tools when appropriate.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"Show me the five most recent comments.\"\r\n        }\r\n    ],\r\n    \"tools\": [\r\n        {\r\n            \"type\": \"function\",\r\n            \"name\": \"get_comments\",\r\n            \"description\": \"Gets the latest comments on BadgerChat Mini.\",\r\n            \"parameters\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"n\": {\r\n                        \"anyOf\": [\r\n                            { \"type\": \"integer\" },\r\n                            { \"type\": \"null\" }\r\n                        ],\r\n                        \"description\": \"Optional max number of comments to return.\"\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"function\",\r\n            \"name\": \"create_comment\",\r\n            \"description\": \"Posts a new comment. The user must be logged in.\",\r\n            \"parameters\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"comment\": {\r\n                        \"type\": \"string\"\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"tool_choice\": \"auto\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/ai/responses",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "hw11",
+                "ai",
+                "responses"
+              ]
+            },
+            "description": "Sends tool definitions to the model. The model should respond with `{ \"tool_calls\": [{ \"call_id\": \"...\", \"name\": \"get_comments\", \"arguments\": { ... } }] }` rather than a `msg`. `arguments` is a JSON object. Copy the `call_id` into the next request."
+          },
+          "response": []
+        },
+        {
+          "name": "Agentic Loop (Feed Tool Result Back)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CS571-ID",
+                "value": "ENTER_YOUR_BID",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"messages\": [\r\n        {\r\n            \"role\": \"developer\",\r\n            \"content\": \"You are Bucky. Use the provided tools when appropriate.\"\r\n        },\r\n        {\r\n            \"role\": \"user\",\r\n            \"content\": \"Show me the most recent comment.\"\r\n        },\r\n        {\r\n            \"type\": \"function_call\",\r\n            \"call_id\": \"call_abc123\",\r\n            \"name\": \"get_comments\",\r\n            \"arguments\": { \"n\": 1 }\r\n        },\r\n        {\r\n            \"type\": \"function_call_output\",\r\n            \"call_id\": \"call_abc123\",\r\n            \"output\": \"{\\\"comments\\\":[{\\\"id\\\":2,\\\"author\\\":\\\"bucky\\\",\\\"comment\\\":\\\"hello world\\\",\\\"created\\\":\\\"2026-04-19T21:06:15.000Z\\\"}]}\"\r\n        }\r\n    ],\r\n    \"tools\": [\r\n        {\r\n            \"type\": \"function\",\r\n            \"name\": \"get_comments\",\r\n            \"description\": \"Gets the latest comments on BadgerChat Mini.\",\r\n            \"parameters\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"n\": {\r\n                        \"anyOf\": [\r\n                            { \"type\": \"integer\" },\r\n                            { \"type\": \"null\" }\r\n                        ],\r\n                        \"description\": \"Optional max number of comments to return.\"\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"function\",\r\n            \"name\": \"create_comment\",\r\n            \"description\": \"Posts a new comment. The user must be logged in.\",\r\n            \"parameters\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"comment\": {\r\n                        \"type\": \"string\"\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"tool_choice\": \"auto\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/ai/responses",
+              "protocol": "https",
+              "host": [
+                "cs571api",
+                "cs",
+                "wisc",
+                "edu"
+              ],
+              "path": [
+                "rest",
+                "s26",
+                "hw11",
+                "ai",
+                "responses"
+              ]
+            },
+            "description": "After the model asks for a tool call, your app executes the tool and feeds the result back as a `function_call` + `function_call_output` pair (matched by `call_id`). The model then produces a natural-language summary. This is the loop your `handleSend` drives up to `MAX_TOOL_ITERATIONS` times."
+          },
+          "response": []
+        }
+      ],
+      "description": "The shared AI Responses endpoint (same one HW11 uses). Run Basic Chat to see plain message flow, Tool Call Request to see the model choose a tool, and Agentic Loop to see how your app feeds the tool's output back."
+    }
+  ]
+}
