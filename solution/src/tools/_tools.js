@@ -14,7 +14,13 @@ export async function getToolDefs() {
                 parameters: {
                     type: "object",
                     properties: {
-                        n: { type: "integer", description: "Optional maximum number of comments to return (1-10). If omitted, returns the default list." }
+                        n: {
+                            anyOf: [
+                                { type: "integer" },
+                                { type: "null" }
+                            ],
+                            description: "Optional maximum number of comments to return (1-10). If omitted or null, returns the default list."
+                        }
                     }
                 }
             }
