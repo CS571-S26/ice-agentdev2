@@ -68,7 +68,7 @@
           }
         },
         "url": {
-          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw6/login",
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/login",
           "protocol": "https",
           "host": [
             "cs571api",
@@ -79,7 +79,8 @@
           "path": [
             "rest",
             "s26",
-            "hw6",
+            "hw11",
+            "chat",
             "login"
           ]
         }
@@ -252,7 +253,7 @@
           }
         ],
         "url": {
-          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw6/whoami",
+          "raw": "https://cs571api.cs.wisc.edu/rest/s26/hw11/chat/whoami",
           "protocol": "https",
           "host": [
             "cs571api",
@@ -263,7 +264,8 @@
           "path": [
             "rest",
             "s26",
-            "hw6",
+            "hw11",
+            "chat",
             "whoami"
           ]
         }
